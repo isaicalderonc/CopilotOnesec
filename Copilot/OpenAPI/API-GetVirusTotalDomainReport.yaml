@@ -1,0 +1,53 @@
+openapi: 3.0.0
+
+info:
+    title: Get Virus Total Domain Information
+    description: Get Information about a Domain from Virus Total
+    version: "v1"
+
+servers:
+    - url: https://www.virustotal.com/api
+
+paths:
+    /v3/domains/{domain}:
+        get:
+            operationId: getVirusTotalDomain
+            summary: Get Virus Total Domain Information.
+            parameters:
+                - in: path
+                  name: domain
+                  schema:
+                      type: string
+                  required: true
+                  description: The domain to lookup              
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: "#/components/schemas/getVTIPResponse"
+
+components:
+    schemas:
+        getVTIPResponse:
+            type: object
+            properties:
+                attributes:
+                    type: object
+                    properties:
+                        jarm:
+                            type: string
+                        network:
+                            type: string
+                        last_https_certificate_date:
+                            type: integer
+                        tags:
+                            type: array
+                        crowdsourced_context:
+                            type: array
+                            items:
+                                type: object
+                                properties:
+                                    source:
+                                        type: string
