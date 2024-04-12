@@ -9,7 +9,7 @@ servers:
     - url: https://www.virustotal.com/api
 
 paths:
-    /v3/urls/{id}/comments:
+    /v3/urls/{id}:
         get:
             operationId: getVirusTotalURLReport
             summary: Get Virus Total an URL analysis report.
