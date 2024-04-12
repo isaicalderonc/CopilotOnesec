@@ -9,13 +9,13 @@ servers:
     - url: https://www.virustotal.com/api
 
 paths:
-    /v3/urls/{id}:
+    /v3/urls:
         get:
             operationId: getVirusTotalURLReport
             summary: Get Virus Total an URL analysis report.
             parameters:
                 - in: path
-                  name: id
+                  name: url
                   schema:
                       type: string
                   required: true
